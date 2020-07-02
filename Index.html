@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Styles.css">
+    <title>Speed test</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+</head>
+<body>
+    <div class="banner">
+        <img class="thunder" src="./lightning.svg">
+        <strong>TESTE A SUA VELOCIDADE DE DIGITAÇÃO AQUI!</strong>
+        <img class="thunder" src="./lightning.svg">
+    </div>
+    <div class="test">
+        <span id="model">Esse é um texto curto e rápido para teste de digitação!</span>
+        <button class="refresh"><img class="thunder" src="./refresh.svg" onclick="alterText()"></button>
+        <div class="user">
+            <input id="input" type="text"></input>
+            <button class="submit" id="click" onclick="myFunction()" type="button">Validar</button>
+        </div>
+    </div>
+    <script>
+        //console.log(document.getElementById("input").value);
+        //console.log(document.getElementById("model").textContent);
+
+        var y = 0;
+
+        function myFunction() {
+            if (document.getElementById("input").value === document.getElementById("model").textContent) {
+                //alert("Sucesso, você acumulou " + (performance.now().toFixed(0)) + " pontos!");
+                y = y + 2500;
+                document.getElementById("input").value = "ACERTOU! VOCÊ GANHOU " + y + " PONTOS!";
+                document.getElementById("click").style.background = '#79d70f';
+            } else {
+                //alert("Errado!");
+                document.getElementById("input").value = "GAME OVER! VOCÊ NÃO PONTUOU NESSA JOGADA!";
+                document.getElementById("click").style.background = '#d92027';
+            }
+        }
+
+        const alters = ['Esse é um texto curto e rápido para teste de digitação!',
+                        'EssE é um eXemplo Para testar sua DiGiTação E sua Atenção!',
+                        'um exemplo rápido e fácil para digitação',
+                        'NíVeL TryHard PaRA testaR sUa VELOciDade De digiTAçÃo!',
+                        'Testando novamente sua velocidade de digitação e suA atenção com as letras maísculaS',
+                        'Frase simples e rápida!'
+        ]
+
+        function alterText() { 
+            var randomItem = alters[Math.floor(Math.random()*alters.length)];
+            document.getElementById('model').textContent = randomItem; 
+            document.getElementById("input").value ="";
+        }
+    </script>
+</body>
+</html>
